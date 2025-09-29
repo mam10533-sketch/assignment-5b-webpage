@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Cute Cat Page</title>
+    <style>
+        body {
+            background-color: #FFF0F5; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            color: #553E4E;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: #D6336C; 
+            font-size: 2.8em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .cat-image {
+            width: 500px;
+            border-radius: 15px;
+            border: 5px solid #FFB6C1; 
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        #cat-drawing-svg {
+            cursor: pointer;
+            transition: transform 0.2s ease; 
+        }
+
+        #cat-drawing-svg:active {
+            transform: scale(0.95); 
+        }
+    </style>
+</head>
+<body>
+
+    <h1>MEOW!</h1>
+    <p>Here is a happy cat in a forest.</p>
+
+    <img src="happycat.jpg" alt="A happy cat in a forest" class="cat-image">
+
+    <p>Click the paw to change its color!</p>
+
+
+    <svg id="cat-drawing-svg" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 651" width="150">
+        <defs>
+            <style>
+            .cls-1 {
+                fill: #fff;
+                stroke: #fff;
+                stroke-miterlimit: 10;
+            }
+
+            .cat-outline {
+                fill: none;
+                stroke: #ff7bac; 
+                stroke-width: 10px; 
+                stroke-miterlimit: 10;
+                transition: stroke 0.4s ease;
+            }
+            </style>
+        </defs>
+        <path class="cat-outline" d="M274.08,18.5c-28.59,3.94-30,50-30,50-38.3-2.76-43.06,34.92-41,66,0,0,18.87,59.52,18,80-2,47-14,102-12,162,4.89,101.44-33.18,240.66,110,228l.35-392.8c-45.74,49.94-102.86-36.48-39.12-59.04,2.12-17.77,18.78-31.68,39.2-32.15l.07-83.04s-16.5-22.97-45.5-18.97ZM248.46,148.11c-25.46,8.19-43.22-47.05-17.75-55.22,25.46-8.19,43.21,47.05,17.75,55.22ZM293.67,103.2c-29.47,6.91-44.08-55.3-14.6-62.21,29.46-6.91,44.07,55.28,14.6,62.21Z"/>
+        <path class="cat-outline" d="M431.5,87.5c-14-23-36-19-36-19,.42-48.92-42.71-68.74-75.5-31.03l.07,83.04c20.42.47,37.08,14.38,39.2,32.15,63.78,22.61,6.56,108.96-39.12,59.04l.35,392.8c142.23,13.44,105.58-127.24,110-228,2-60-10-115-12-162,3.65-57.49,29.59-78.68,13-127ZM375.8,77.39c-10.18,40.81-54.19,30.46-45.17-10.59,10.18-40.8,54.2-30.48,45.17,10.59ZM419.52,126.77c-12.18,36.17-50.21,23.96-39.04-12.54,12.18-36.17,50.21-23.96,39.04,12.54Z"/>
+    </svg>
+
+    <script>
+        const svg = document.getElementById('cat-drawing-svg');
+
+        const outlines = document.querySelectorAll('.cat-outline');
+
+        const originalColor = '#ff7bac';
+        const newColor = '#B19CD9'; 
+
+        let isOriginalColor = true;
+
+        svg.addEventListener('click', () => {
+
+            const targetColor = isOriginalColor ? newColor : originalColor;
+            
+            outlines.forEach(path => {
+                path.style.stroke = targetColor;
+            });
+
+            isOriginalColor = !isOriginalColor;
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+
